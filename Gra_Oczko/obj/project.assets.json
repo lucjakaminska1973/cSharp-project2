@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "Oczko/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Oczko.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Oczko.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Oczko/1.0.0": {
+      "type": "project",
+      "path": "../Oczko/Oczko.csproj",
+      "msbuildProject": "../Oczko/Oczko.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "Oczko >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Administrator\\.nuget\\packages\\": {}
@@ -32,7 +51,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Administrator\\source\\repos\\Gra_Oczko_Projekt\\Oczko\\Oczko.csproj": {
+              "projectPath": "C:\\Users\\Administrator\\source\\repos\\Gra_Oczko_Projekt\\Oczko\\Oczko.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

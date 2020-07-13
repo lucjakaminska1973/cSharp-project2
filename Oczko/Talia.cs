@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Oczko
 {
-    class Talia : Karty
+    public class Talia : Karty, ITalia
     {
         public static byte IleKart
         {
@@ -30,7 +30,7 @@ namespace Oczko
         public Karty[] wybrana_Talia;
 
 
-        public Talia()
+        public Talia(byte IleKart)
         {
             wybrana_Talia = new Karty[IleKart];
         }
@@ -38,7 +38,7 @@ namespace Oczko
         public Karty[] GetTalia { get { return wybrana_Talia; } }
 
 
-        public void Talia_Kreator()
+        public void Talia_Kreator(byte IleKart)
         {
             foreach (Kolor k in Enum.GetValues(typeof(Kolor)))
             {

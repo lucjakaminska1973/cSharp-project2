@@ -10,19 +10,21 @@ namespace Oczko
     public struct Punkty
     {
         public byte Total { get; set; }
+        public byte Punkty_Karty { get; set; }
     }
 
     public class Karty_W_Grze : Talia
     {
-        public Karty_W_Grze(byte IleKart) : base(IleKart)
+        public Karty_W_Grze(byte IleKart, Karty[] karty_Gracza) : base(IleKart)
         {
             DodacKarte = "T";
             indexyWydane = new List<byte>();
             suma = new Punkty();
-            kartyGracza = GetTalia;
+            this.kartyGracza = GetTalia;
+            punkty_Karty = new Punkty();
         }
 
-       
+        
 
         public static byte Punkty_Asa
         {
@@ -43,13 +45,13 @@ namespace Oczko
             }
 
         }
-        protected Punkty suma;
-        protected Karty[] kartyGracza;
+        public Punkty suma;
+        public Karty[] kartyGracza;
         private byte index;
-        private readonly List<byte> indexyWydane;
+        protected  List<byte> indexyWydane;
+        public Punkty punkty_Karty;
 
-
-        private byte Index
+        protected byte Index
         {
             get
             {
@@ -69,7 +71,7 @@ namespace Oczko
         }
         public static string DodacKarte
         {
-            private get { return DodacKarte; }
+            get => DodacKarte;
 
             set
             {
@@ -113,7 +115,7 @@ namespace Oczko
 
 
 
-        public byte Punkty_W_Grze()
+        public byte Punkty_Gracza()
         {
             //List<byte> indexyWydane = new List<byte>();
             while (DodacKarte == "T" || DodacKarte == "t")
@@ -159,6 +161,81 @@ namespace Oczko
                 throw new ArgumentException("powtórz co mam zrobić");
             }
 
+
+
+        }
+        public string Czy_Dobrac_Komp( byte x)
+        {
+            for(byte i = 0; i<IleKart; i++)
+            {
+                int j = 0;
+                byte n = (byte)kartyGracza[i].Numerek;
+                byte dn = (byte)kartyGracza[i].DodatkoweNumerki;
+                byte sum = (byte)suma.Total;
+                bool c = indexyWydane.Contains(i);
+                if (c == false)
+                {
+                    if (IleKart == 24)
+                    {
+                        if (n < 21 - sum) j++;
+                        
+
+                        
+                    }
+                    else 
+                    {
+                        if(n < 21 - sum) j++;
+                        if(dn < 21 - sum) j++; 
+
+                    }
+                }
+                
+            }
+            DodacKarte = j > 3 ? "t" : "n";
+            return DodacKarte;
+
+
+        }
+        public byte Punkty_Komputer()
+        {
+
+            do
+            {
+                do
+                {
+                    index = WylosujKarte();
+                } while (indexyWydane.Contains(index));
+
+                indexyWydane.Add(index);
+
+                if ((index <= 5 && index >= 0) || (index <= 18 && index >= 13)
+                    || (index <= 31 && index >= 26) || (index <= 39 && index >= 32) || (index <= 52 && index >= 47))
+                {
+                    byte v = (byte)kartyGracza[index].Numerek;
+                    Wypisz_Karte(kartyGracza[index], index);
+
+                    suma.Total += v;
+                    Wypisz_Punkty(suma);
+                    //return suma.Total;
+                }
+                else
+                {
+                    Wypisz_Karte(kartyGracza[index], index);
+                    suma.Total += (byte)kartyGracza[index].DodatkoweNumerki;
+                    Wypisz_Punkty(suma);
+                }
+                Czy_Dobrac_Komp(suma.Total);
+            }while(DodacKarte == "t");
+
+            if (DodacKarte == "n" || DodacKarte == "N")
+            {
+                indexyWydane.Clear();
+                return suma.Total;
+            }
+            else
+            {
+                throw new ArgumentException("powtórz co mam zrobić");
+            }
 
 
         }

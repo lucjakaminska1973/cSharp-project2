@@ -1,4 +1,5 @@
 ﻿using System;
+using Oczko;
 
 namespace Gra_Oczko
 {
@@ -7,6 +8,9 @@ namespace Gra_Oczko
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            Console.WriteLine("Podaj liczbę kart w talii");
+            string liczbaKart = Console.ReadLine();
+            byte.Parse(liczbaKart).wybra
         }
     }
 }

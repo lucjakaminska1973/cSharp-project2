@@ -4,8 +4,9 @@ using System.Text;
 
 namespace Oczko
 {
-    public class Talia : Karty, ITalia
+    public class Talia : Karty
     {
+
         public static byte IleKart
         {
             get
@@ -27,19 +28,28 @@ namespace Oczko
             }
         }
 
-        public Karty[] wybrana_Talia;
+        private readonly Karty[] wybrana_Talia;
 
 
-        public Talia(byte IleKart)
-        {
-            wybrana_Talia = new Karty[IleKart];
-        }
+        public Talia(byte IleKart) => wybrana_Talia = new Karty[IleKart];
+
+        public Talia() { }
+        
+        
 
         public Karty[] GetTalia { get { return wybrana_Talia; } }
 
-
-        public void Talia_Kreator(byte IleKart)
+        public static byte Ile_Kart()
         {
+            Console.WriteLine("Wybierz talię : 24 lub 52 karty");
+             IleKart = byte.Parse(Console.ReadLine());
+            return IleKart;
+        }
+
+
+        public void Talia_Kreator(byte ileKart)
+        {
+            
             foreach (Kolor k in Enum.GetValues(typeof(Kolor)))
             {
                 int i = 0;
@@ -49,7 +59,7 @@ namespace Oczko
                     wybrana_Talia[i] = karty;
                     i++;
                 }
-                if (IleKart == 52)
+                if (ileKart == 52)
                 {
                     foreach (DodatkoweNumery nd in Enum.GetValues(typeof(DodatkoweNumery)))
                     {

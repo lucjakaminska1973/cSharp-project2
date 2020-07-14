@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Oczko;
 
 namespace Gra_Oczko
@@ -7,10 +8,22 @@ namespace Gra_Oczko
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            Console.WriteLine("Podaj liczbę kart w talii");
-            string liczbaKart = Console.ReadLine();
-            byte.Parse(liczbaKart).wybra
+            string linia = " ";  
+            
+            Console.WriteLine(" GRAMY W OCZKO !!!");
+
+            Rozgrywka r = new Rozgrywka(Talia.Ile_Kart());
+            
+            while (linia != "" && linia != null)
+            {
+                r.Zagraj();
+                Console.WriteLine("\n Jeszcze raz? \n ENTER kończy grę:(");
+                linia = Console.ReadLine();
+            }
+            r.Wynik_Koncowy();
+
+
+            Console.ReadLine();
         }
     }
 }

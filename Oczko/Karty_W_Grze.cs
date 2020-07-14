@@ -15,18 +15,24 @@ namespace Oczko
 
     public class Karty_W_Grze : Talia
     {
-        public Karty_W_Grze(byte IleKart, Karty[] karty_Gracza) : base(IleKart)
+        public Punkty suma;
+        public Karty[] kartyGracza;
+        protected byte index;
+        protected List<byte> indexyWydane;
+        //public Punkty punkty_Karty;
+
+        public Karty_W_Grze(byte IleKart) : base(IleKart)
         {
             DodacKarte = "T";
             indexyWydane = new List<byte>();
             suma = new Punkty();
             this.kartyGracza = GetTalia;
-            punkty_Karty = new Punkty();
+            // punkty_Karty = new Punkty();
         }
 
-        
 
-        public static byte Punkty_Asa
+
+        protected static byte Punkty_Asa
         {
             get
             {
@@ -45,13 +51,9 @@ namespace Oczko
             }
 
         }
-        public Punkty suma;
-        public Karty[] kartyGracza;
-        private byte index;
-        protected  List<byte> indexyWydane;
-        public Punkty punkty_Karty;
 
-        protected byte Index
+
+        private byte Index
         {
             get
             {
@@ -110,6 +112,7 @@ namespace Oczko
         {
             Console.WriteLine("Masz Asa. Podaj ile chcesz dodać punktów ( 1 lub 11)");
             Punkty_Asa = byte.Parse(Console.ReadLine());
+
             return Punkty_Asa;
         }
 
@@ -117,11 +120,9 @@ namespace Oczko
 
         public byte Punkty_Gracza()
         {
-            //List<byte> indexyWydane = new List<byte>();
+
             while (DodacKarte == "T" || DodacKarte == "t")
             {
-                //    if (dodacKarte == "T" || dodacKarte == "t")
-                //{
 
                 do
                 {
@@ -154,6 +155,7 @@ namespace Oczko
             if (DodacKarte == "n" || DodacKarte == "N")
             {
                 indexyWydane.Clear();
+                Wypisz_Punkty();
                 return suma.Total;
             }
             else
@@ -164,11 +166,12 @@ namespace Oczko
 
 
         }
-        public string Czy_Dobrac_Komp( byte x)
+        public string Czy_Dobrac_Komp(byte x)
         {
-            for(byte i = 0; i<IleKart; i++)
+            int j = 0;
+            for (byte i = 0; i < IleKart; i++)
             {
-                int j = 0;
+
                 byte n = (byte)kartyGracza[i].Numerek;
                 byte dn = (byte)kartyGracza[i].DodatkoweNumerki;
                 byte sum = (byte)suma.Total;
@@ -178,18 +181,18 @@ namespace Oczko
                     if (IleKart == 24)
                     {
                         if (n < 21 - sum) j++;
-                        
 
-                        
+
+
                     }
-                    else 
+                    else
                     {
-                        if(n < 21 - sum) j++;
-                        if(dn < 21 - sum) j++; 
+                        if (n < 21 - sum) j++;
+                        if (dn < 21 - sum) j++;
 
                     }
                 }
-                
+
             }
             DodacKarte = j > 3 ? "t" : "n";
             return DodacKarte;
@@ -216,7 +219,7 @@ namespace Oczko
 
                     suma.Total += v;
                     Wypisz_Punkty(suma);
-                    //return suma.Total;
+
                 }
                 else
                 {
@@ -225,11 +228,12 @@ namespace Oczko
                     Wypisz_Punkty(suma);
                 }
                 Czy_Dobrac_Komp(suma.Total);
-            }while(DodacKarte == "t");
+            } while (DodacKarte == "t");
 
             if (DodacKarte == "n" || DodacKarte == "N")
             {
                 indexyWydane.Clear();
+                Wypisz_Punkty();
                 return suma.Total;
             }
             else
@@ -257,8 +261,7 @@ namespace Oczko
                 Console.WriteLine(karty.Kolorek);
             }
         }
-        public void Wypisz_Punkty(Punkty punkty) => Console.WriteLine($"Masz teraz {suma.Total} punktów");
-
+        public void Wypisz_Punkty(Punkty punkty) => Console.WriteLine($"Suma zdobytych punktów {suma.Total} ");
 
 
 

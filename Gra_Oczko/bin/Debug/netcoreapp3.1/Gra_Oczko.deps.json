@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Gra_Oczko/1.0.0": {
+        "dependencies": {
+          "Oczko": "1.0.0"
+        },
+        "runtime": {
+          "Gra_Oczko.dll": {}
+        }
+      },
+      "Oczko/1.0.0": {
+        "runtime": {
+          "Oczko.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Gra_Oczko/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Oczko/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

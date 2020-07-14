@@ -1,0 +1,9 @@
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Oczko\bin\Debug\netstandard2.0\Oczko.deps.json
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Oczko\bin\Debug\netstandard2.0\Oczko.dll
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Oczko\bin\Debug\netstandard2.0\Oczko.pdb
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Oczko\obj\Debug\netstandard2.0\Oczko.csprojAssemblyReference.cache
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Oczko\obj\Debug\netstandard2.0\Oczko.AssemblyInfoInputs.cache
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Oczko\obj\Debug\netstandard2.0\Oczko.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Oczko\obj\Debug\netstandard2.0\Oczko.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Oczko\obj\Debug\netstandard2.0\Oczko.dll
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Oczko\obj\Debug\netstandard2.0\Oczko.pdb

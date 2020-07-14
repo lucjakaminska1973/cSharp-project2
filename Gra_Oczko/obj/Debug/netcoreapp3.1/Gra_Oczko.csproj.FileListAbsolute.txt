@@ -1,0 +1,16 @@
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Gra_Oczko\bin\Debug\netcoreapp3.1\Gra_Oczko.exe
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Gra_Oczko\bin\Debug\netcoreapp3.1\Gra_Oczko.deps.json
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Gra_Oczko\bin\Debug\netcoreapp3.1\Gra_Oczko.runtimeconfig.json
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Gra_Oczko\bin\Debug\netcoreapp3.1\Gra_Oczko.runtimeconfig.dev.json
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Gra_Oczko\bin\Debug\netcoreapp3.1\Gra_Oczko.dll
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Gra_Oczko\bin\Debug\netcoreapp3.1\Gra_Oczko.pdb
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Gra_Oczko\bin\Debug\netcoreapp3.1\Oczko.dll
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Gra_Oczko\bin\Debug\netcoreapp3.1\Oczko.pdb
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Gra_Oczko\obj\Debug\netcoreapp3.1\Gra_Oczko.csprojAssemblyReference.cache
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Gra_Oczko\obj\Debug\netcoreapp3.1\Gra_Oczko.AssemblyInfoInputs.cache
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Gra_Oczko\obj\Debug\netcoreapp3.1\Gra_Oczko.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Gra_Oczko\obj\Debug\netcoreapp3.1\Gra_Oczko.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Gra_Oczko\obj\Debug\netcoreapp3.1\Gra_Oczko.csproj.CopyComplete
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Gra_Oczko\obj\Debug\netcoreapp3.1\Gra_Oczko.dll
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Gra_Oczko\obj\Debug\netcoreapp3.1\Gra_Oczko.pdb
+C:\Users\Administrator\source\repos\Gra_Oczko_Projekt\Gra_Oczko\obj\Debug\netcoreapp3.1\Gra_Oczko.genruntimeconfig.cache

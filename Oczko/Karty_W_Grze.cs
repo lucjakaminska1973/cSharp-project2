@@ -19,14 +19,16 @@ namespace Oczko
         public Karty[] kartyGracza;
         protected byte index;
         protected List<byte> indexyWydane;
-        //public Punkty punkty_Karty;
+        public static string dodacKarte;
+        protected static byte punkty_Asa;
 
         public Karty_W_Grze(byte IleKart) : base(IleKart)
         {
-            DodacKarte = "T";
+            dodacKarte = "T";
             indexyWydane = new List<byte>();
             suma = new Punkty();
             this.kartyGracza = GetTalia;
+
             // punkty_Karty = new Punkty();
         }
 
@@ -36,13 +38,13 @@ namespace Oczko
         {
             get
             {
-                return Punkty_Asa;
+                return punkty_Asa;
             }
             set
             {
                 if (value == 1 || value == 11)
                 {
-                    Punkty_Asa = value;
+                    punkty_Asa = value;
                 }
                 else
                 {
@@ -57,13 +59,13 @@ namespace Oczko
         {
             get
             {
-                return Index;
+                return index;
             }
             set
             {
-                if (value > 0 && value < IleKart)
+                if (value >= 0 && value < IleKart)
                 {
-                    Index = value;
+                    index = value;
                 }
                 else
                 {
@@ -73,17 +75,17 @@ namespace Oczko
         }
         public static string DodacKarte
         {
-            get => DodacKarte;
+            get => dodacKarte;
 
             set
             {
                 if (value == "T" || value == "t" || value == "n" || value == "N")
                 {
-                    DodacKarte = value;
+                   dodacKarte = value;
                 }
                 else
                 {
-                    throw new ArgumentException("spróbuj jeszcze raz ");
+                    throw new ArgumentException("Zły wybór");
                 }
             }
         }
@@ -91,8 +93,8 @@ namespace Oczko
         public string Zapytaj()
         {
             Console.WriteLine("Chcesz dobrać kartę?");
-            DodacKarte = Console.ReadLine();
-            return DodacKarte;
+            dodacKarte = Console.ReadLine();
+            return dodacKarte;
         }
         public void Wypisz_Punkty()
         {
@@ -111,9 +113,9 @@ namespace Oczko
         public byte Za_ile_As()
         {
             Console.WriteLine("Masz Asa. Podaj ile chcesz dodać punktów ( 1 lub 11)");
-            Punkty_Asa = byte.Parse(Console.ReadLine());
+            punkty_Asa = byte.Parse(Console.ReadLine());
 
-            return Punkty_Asa;
+            return punkty_Asa;
         }
 
 
@@ -121,7 +123,7 @@ namespace Oczko
         public byte Punkty_Gracza()
         {
 
-            while (DodacKarte == "T" || DodacKarte == "t")
+            while (dodacKarte == "T" || dodacKarte == "t")
             {
 
                 do
@@ -135,7 +137,7 @@ namespace Oczko
                     || (index <= 31 && index >= 26) || (index <= 39 && index >= 32) || (index <= 52 && index >= 47))
                 {
                     byte v = (byte)kartyGracza[index].Numerek;
-                    Wypisz_Karte(kartyGracza[index], index);
+                    Wypisz_Karte(IleKart, kartyGracza[index], index);
                     if (v == 1)
                     {
                         v = Za_ile_As();
@@ -146,13 +148,13 @@ namespace Oczko
                 }
                 else
                 {
-                    Wypisz_Karte(kartyGracza[index], index);
+                    Wypisz_Karte(IleKart, kartyGracza[index], index);
                     suma.Total += (byte)kartyGracza[index].DodatkoweNumerki;
                     Wypisz_Punkty(suma);
                 }
                 Zapytaj();
             }
-            if (DodacKarte == "n" || DodacKarte == "N")
+            if (dodacKarte == "n" || dodacKarte == "N")
             {
                 indexyWydane.Clear();
                 Wypisz_Punkty();
@@ -194,8 +196,8 @@ namespace Oczko
                 }
 
             }
-            DodacKarte = j > 3 ? "t" : "n";
-            return DodacKarte;
+            dodacKarte = j > 3 ? "t" : "n";
+            return dodacKarte;
 
 
         }
@@ -215,7 +217,7 @@ namespace Oczko
                     || (index <= 31 && index >= 26) || (index <= 39 && index >= 32) || (index <= 52 && index >= 47))
                 {
                     byte v = (byte)kartyGracza[index].Numerek;
-                    Wypisz_Karte(kartyGracza[index], index);
+                    Wypisz_Karte(IleKart, kartyGracza[index], index);
 
                     suma.Total += v;
                     Wypisz_Punkty(suma);
@@ -223,14 +225,14 @@ namespace Oczko
                 }
                 else
                 {
-                    Wypisz_Karte(kartyGracza[index], index);
+                    Wypisz_Karte(IleKart, kartyGracza[index], index);
                     suma.Total += (byte)kartyGracza[index].DodatkoweNumerki;
                     Wypisz_Punkty(suma);
                 }
                 Czy_Dobrac_Komp(suma.Total);
             } while (DodacKarte == "t");
 
-            if (DodacKarte == "n" || DodacKarte == "N")
+            if (dodacKarte == "n" || dodacKarte == "N")
             {
                 indexyWydane.Clear();
                 Wypisz_Punkty();
@@ -243,22 +245,32 @@ namespace Oczko
 
 
         }
-        public void Wypisz_Karte(Karty karty, byte index)
+        public void Wypisz_Karte(byte ileKart, Karty karty, byte index)
         {
-            if ((index <= 5 && index >= 0) || (index <= 18 && index >= 13)
-                    || (index <= 31 && index >= 26) || (index <= 39 && index >= 32) || (index <= 52 && index >= 47))
+            if (ileKart ==52)
             {
+                if ((index <= 5 && index >= 0) || (index <= 18 && index >= 13)
+                    || (index <= 31 && index >= 26) || (index <= 39 && index >= 32) || (index <= 52 && index >= 47))
+                {
 
 
-                Console.Write(karty.Numerek);
-                Console.Write("  ");
-                Console.WriteLine(karty.Kolorek);
+                    Console.Write(karty.Numerek);
+                    Console.Write("  ");
+                    Console.WriteLine(karty.Kolorek);
+                }
+                else
+                {
+                    Console.Write(karty.DodatkoweNumerki);
+                    Console.Write("  ");
+
+                    Console.WriteLine(karty.Kolorek);
+                }
             }
             else
             {
-                Console.Write(karty.DodatkoweNumerki);
+                Console.Write(value: karty.Numerek);
                 Console.Write("  ");
-                Console.WriteLine(karty.Kolorek);
+                Console.WriteLine(value: karty.Kolorek);
             }
         }
         public void Wypisz_Punkty(Punkty punkty) => Console.WriteLine($"Suma zdobytych punktów {suma.Total} ");

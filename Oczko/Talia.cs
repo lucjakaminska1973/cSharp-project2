@@ -6,19 +6,19 @@ namespace Oczko
 {
     public class Talia : Karty
     {
-
+        public static byte ileKart;
         public static byte IleKart
         {
             get
-            {
-                return IleKart;
+            { 
+                return ileKart;
             }
 
             set
             {
-                if (value == 52 || value == 24)
+                if (value == 52 || value ==24)
                 {
-                    IleKart = value;
+                   ileKart= value;
                 }
                 else
                 {
@@ -29,21 +29,25 @@ namespace Oczko
         }
 
         private readonly Karty[] wybrana_Talia;
+        public Karty[] GetTalia { get { return wybrana_Talia; } }
 
-
-        public Talia(byte IleKart) => wybrana_Talia = new Karty[IleKart];
+        public Talia(byte IleKart)
+        {
+            wybrana_Talia = new Karty[IleKart];
+        }
 
         public Talia() { }
         
         
 
-        public Karty[] GetTalia { get { return wybrana_Talia; } }
+        
 
         public static byte Ile_Kart()
         {
             Console.WriteLine("Wybierz talię : 24 lub 52 karty");
-             IleKart = byte.Parse(Console.ReadLine());
-            return IleKart;
+            ileKart = byte.Parse(Console.ReadLine());
+            return ileKart
+                ;
         }
 
 
@@ -75,4 +79,6 @@ namespace Oczko
         }
 
     }
+
+
 }

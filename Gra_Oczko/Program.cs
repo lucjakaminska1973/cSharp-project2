@@ -11,17 +11,19 @@ namespace Gra_Oczko
             string linia = " ";  
             
             Console.WriteLine(" GRAMY W OCZKO !!!");
-
-            Rozgrywka r = new Rozgrywka(Talia.Ile_Kart());
+            byte x = Talia.Ile_Kart();
+            //Talia t = new Talia(x);
+            //t.Talia_Kreator(x);
+            Rozgrywka r = new Rozgrywka(x);
             
             while (linia != "" && linia != null)
-            {
+            
                 r.Zagraj();
                 Console.WriteLine("\n Jeszcze raz? \n ENTER kończy grę:(");
                 linia = Console.ReadLine();
-            }
+           
             r.Wynik_Koncowy();
-
+            r.ToString();
 
             Console.ReadLine();
         }

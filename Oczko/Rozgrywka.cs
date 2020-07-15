@@ -11,13 +11,13 @@ namespace Oczko
         public Rozgrywka(byte IleKart) : base(IleKart)
         {
             kartyGracza = GetTalia;
-            IleKart = Ile_Kart();
+            ileKart = Ile_Kart();
             wyniki = new List<byte>();
         }
 
         public List<byte> Zagraj()
         {
-            Talia_Kreator(IleKart);
+            
             wyniki.Add(Punkty_Gracza());
             wyniki.Add(Punkty_Komputer());
             return wyniki;
@@ -41,6 +41,8 @@ namespace Oczko
 
 
         }
+        public override string ToString() => $"Gracz: {wynikKoncowy[0]}\n Komputer: {wynikKoncowy[1]}";
+        
 
 
 

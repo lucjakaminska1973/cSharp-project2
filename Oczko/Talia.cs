@@ -6,29 +6,29 @@ namespace Oczko
 {
     public class Talia : Karty
     {
-        public static byte ileKart;
-        public static byte IleKart
-        {
-            get
-            { 
-                return ileKart;
-            }
+        public byte ileKart;
+        public static byte IleKart { get; private set; }
+        //{
+        //    get
+        //    {
+        //        return ileKart;
+        //    }
 
-            set
-            {
-                if (value == 52 || value ==24)
-                {
-                   ileKart= value;
-                }
-                else
-                {
-                    throw new ArgumentException("Możesz wybrać 52 lub 24");
-                }
+        //    set
+        //    {
+        //        if (value == 52 || value == 24)
+        //        {
+        //            ileKart = value;
+        //        }
+        //        else
+        //        {
+        //            throw new ArgumentException("ERROR");
+        //        }
 
-            }
-        }
+        //    }
+        //}
 
-        private readonly Karty[] wybrana_Talia;
+        protected readonly Karty[] wybrana_Talia;
         public Karty[] GetTalia { get { return wybrana_Talia; } }
 
         public Talia(byte IleKart)
@@ -37,23 +37,30 @@ namespace Oczko
         }
 
         public Talia() { }
-        
-        
 
-        
+
+
+
 
         public static byte Ile_Kart()
         {
             Console.WriteLine("Wybierz talię : 24 lub 52 karty");
-            ileKart = byte.Parse(Console.ReadLine());
-            return ileKart
-                ;
+            IleKart = byte.Parse(Console.ReadLine());
+            if (IleKart == 52 || IleKart == 24)
+            {
+                return IleKart;
+            }
+            else
+            {
+                throw new ArgumentException();
+            }
+
         }
 
 
-        public void Talia_Kreator(byte ileKart)
+        public void Talia_Kreator()
         {
-            
+           // IleKart = Ile_Kart();
             foreach (Kolor k in Enum.GetValues(typeof(Kolor)))
             {
                 int i = 0;

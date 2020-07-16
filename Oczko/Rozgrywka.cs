@@ -7,41 +7,71 @@ namespace Oczko
     public class Rozgrywka : Karty_W_Grze
     {
         public List<byte> wyniki;
-        public byte[] wynikKoncowy = new byte[2];
+        
+        public int IleRund { get; set; }
+        public byte gracz;
+        public byte komp;
         public Rozgrywka(byte IleKart) : base(IleKart)
         {
             kartyGracza = GetTalia;
-            ileKart = Ile_Kart();
+            //ileKart = Ile_Kart();
             wyniki = new List<byte>();
+            gracz = 0;
+            komp = 0;
         }
+
 
         public List<byte> Zagraj()
         {
-            
-            wyniki.Add(Punkty_Gracza());
-            wyniki.Add(Punkty_Komputer());
-            return wyniki;
+            Talia_Kreator();
+            Ile_Rund();
+            for (int i = 0; i < IleRund; i++)
+            {
+                Punkty_Gracza();
+                wyniki.Add(suma);
+                Punkty_Komputer();
+                wyniki.Add(suma);
+            }
 
+            return wyniki;
+        
         }
-        public byte[] Wynik_Koncowy()
+        public void Wynik_Koncowy()
         {
-            byte gracz = 0;
-            byte komp = 0;
+            
+            
             for (int i = 0; i < wyniki.Count; i += 2)
             {
-                gracz += wyniki[i];
+                if (wyniki[i] > wyniki[i + 1])
+                {
+                    gracz += 1;
+                }
+                else
+                {
+                    komp += 1;
+                }
             }
-            for (int i = 1; i < wyniki.Count; i += 2)
+            if (gracz > komp)
             {
-                komp += wyniki[i];
+                Console.WriteLine("GRATULACJE 4U!!!");
             }
-            wynikKoncowy[0] = gracz;
-            wynikKoncowy[1] = komp;
-            return wynikKoncowy;
+            else
+            {
+                Console.WriteLine("KOMPUTER BYŁ LEPSZY:(");
+            }
+
+            
+            
 
 
         }
-        public override string ToString() => $"Gracz: {wynikKoncowy[0]}\n Komputer: {wynikKoncowy[1]}";
+        public int Ile_Rund()
+        {
+            Console.WriteLine("Ile rund chcesz zagrać?");
+            IleRund = int.Parse(Console.ReadLine());
+            return IleRund;
+        }
+        
         
 
 

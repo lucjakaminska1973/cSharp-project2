@@ -22,7 +22,7 @@ namespace Oczko
         public enum Numer : byte
         {
             As = 1,
-            Joker,
+            Joker =2,
             Dama,
             Król,
             Dziewiątka = 9,

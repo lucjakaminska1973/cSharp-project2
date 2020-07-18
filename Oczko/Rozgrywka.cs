@@ -6,14 +6,15 @@ namespace Oczko
 {
     public class Rozgrywka : Karty_W_Grze
     {
-        public List<byte> wyniki;
+        public List<byte> wyniki { get; private set; }
         
         public int IleRund { get; set; }
         public byte gracz;
         public byte komp;
+
         public Rozgrywka(byte IleKart) : base(IleKart)
         {
-            kartyGracza = GetTalia;
+            taliaGracza = GetTalia;
             //ileKart = Ile_Kart();
             wyniki = new List<byte>();
             gracz = 0;
@@ -25,13 +26,14 @@ namespace Oczko
         {
             Talia_Kreator();
             Ile_Rund();
-            for (int i = 0; i < IleRund; i++)
-            {
-                Punkty_Gracza();
+            
+            //for (int i = 0; i < IleRund; i++)
+            // {
+            Punkty_Gracza();
                 wyniki.Add(suma);
                 Punkty_Komputer();
                 wyniki.Add(suma);
-            }
+           // }
 
             return wyniki;
         
@@ -42,10 +44,19 @@ namespace Oczko
             
             for (int i = 0; i < wyniki.Count; i += 2)
             {
-                if (wyniki[i] > wyniki[i + 1])
+                if (wyniki[i]==21)
+                {
+                    gracz += 3;
+                }
+                else if(wyniki[i+1] == 21)
+                {
+                komp += 3;
+                }
+                else if (wyniki[i] > wyniki[i + 1] || wyniki[i]>21)
                 {
                     gracz += 1;
                 }
+                
                 else
                 {
                     komp += 1;

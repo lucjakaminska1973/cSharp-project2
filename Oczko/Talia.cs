@@ -7,6 +7,9 @@ namespace Oczko
     public class Talia : Karty
     {
         public byte ileKart;
+        protected Array kolorvalues = Enum.GetValues(typeof(Kolor));
+        protected Array numervalues = Enum.GetValues(typeof(Numer));
+        protected Array dnumervalues = Enum.GetValues(typeof(DodatkoweNumery));
         public static byte IleKart { get; private set; }
         //{
         //    get
@@ -58,31 +61,39 @@ namespace Oczko
         }
 
 
-        public void Talia_Kreator()
+        public Karty[] Talia_Kreator()
         {
-           // IleKart = Ile_Kart();
-            foreach (Kolor k in Enum.GetValues(typeof(Kolor)))
+            //Array kolorvalues = Enum.GetValues(typeof(Kolor));
+            //Array numervalues = Enum.GetValues(typeof(Numer));
+            //Array dnumervalues = Enum.GetValues(typeof(DodatkoweNumery));
+            int ind = 0;
+
+            for (int i = 0; i < kolorvalues.Length; i++)
             {
-                int i = 0;
-                foreach (Numer n in Enum.GetValues(typeof(Numer)))
+                
+                int j;
+                Kolor k = (Kolor)kolorvalues.GetValue(i);
+                for ( j = 0; j < numervalues.Length; j++)
                 {
+                    Numer n = (Numer)numervalues.GetValue(j);
                     var karty = new Karty { Kolorek = k, Numerek = n };
-                    wybrana_Talia[i] = karty;
-                    i++;
+                    wybrana_Talia[ind] = karty;
+                    ind++;
                 }
-                if (ileKart == 52)
+                if (IleKart == 52)
                 {
-                    foreach (DodatkoweNumery nd in Enum.GetValues(typeof(DodatkoweNumery)))
+                    for (int jj = 0; jj < dnumervalues.Length; jj++)
                     {
-                        var karty = new Karty { Kolorek = k, DodatkoweNumerki = nd };
-                        wybrana_Talia[i] = karty;
-                        i++;
+                        DodatkoweNumery dn = (DodatkoweNumery)dnumervalues.GetValue(jj);
+                        var karty = new Karty { Kolorek = k, DodatkoweNumerki = dn };
+                        wybrana_Talia[ind] = karty;
+                        ind++;
                     }
 
                 }
 
             }
-
+            return wybrana_Talia;
         }
 
     }

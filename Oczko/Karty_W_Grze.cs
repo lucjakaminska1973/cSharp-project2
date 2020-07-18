@@ -7,33 +7,29 @@ using System.Text;
 
 namespace Oczko
 {
-    //public struct Punkty
-    //{
-    //    public byte Total { get; set; }
-    //    public byte Punkty_Karty { get; set; }
-    //}
+    
 
     public class Karty_W_Grze : Talia
     {
         public byte suma;
-        public Karty[] talia;
+        public Karty karta = new Karty();
         protected byte index;
         protected List<byte> indexyWydane;
-        public static string dodacKarte;
+        protected static string dodacKarte;
         protected static byte punkty_Asa;
-         public Karty[] kartyGracza = new Karty[IleKart];
-
+         public Karty[] taliaGracza = new Karty[IleKart];
+        
         public Karty_W_Grze(byte ileKart) : base(IleKart)
         {
             DodacKarte = "T";
             indexyWydane = new List<byte>();
             suma = 0;
-
             
-             kartyGracza= GetTalia;
-            // punkty_Karty = new Punkty();
+            
+             taliaGracza= GetTalia;
+            
         }
-        
+        //public Karty[] KartyGracza { get { return GetTalia; } }
 
 
 
@@ -125,6 +121,10 @@ namespace Oczko
 
         public byte Punkty_Gracza()
         {
+            for (byte i = 0; i < IleKart; i++)
+            {
+                Wypisz_Karte(IleKart,taliaGracza[i],i);
+            }
 
             while (DodacKarte == "T" || DodacKarte == "t")
             {
@@ -140,8 +140,9 @@ namespace Oczko
                     if ((index <= 5 && index >= 0) || (index <= 18 && index >= 13)
                        || (index <= 31 && index >= 26) || (index <= 39 && index >= 32) || (index <= 52 && index >= 47))
                     {
-                        byte v = byte.Parse(kartyGracza[Index].Numerek.ToString("D"));
-                        Wypisz_Karte(IleKart, kartyGracza[Index], Index);
+                        Wypisz_Karte(IleKart, taliaGracza[index], Index);
+                        byte v = byte.Parse(taliaGracza[Index].Numerek.ToString("D"));
+                        
                         if (v == 1)
                         {
                             v = Za_ile_As();
@@ -152,15 +153,16 @@ namespace Oczko
                     }
                     else
                     {
-                        Wypisz_Karte(IleKart, kartyGracza[Index], Index);
-                        suma += byte.Parse(kartyGracza[index].DodatkoweNumerki.ToString("D"));
+                        Wypisz_Karte(IleKart, taliaGracza[index], Index);
+                        suma += byte.Parse(taliaGracza[index].DodatkoweNumerki.ToString("D"));
+                        //byte i = byte.Parse(taliaGracza[index].DodatkoweNumerki.ToString("D"));
                         Wypisz_Punkty(suma);
                     }
                 }
                 else
                 {
-                    Wypisz_Karte(IleKart, kartyGracza[Index], Index);
-                    byte v = byte.Parse(kartyGracza[Index].Numerek.ToString("D"));
+                    Wypisz_Karte(IleKart, taliaGracza[index], Index);
+                    byte v = byte.Parse(taliaGracza[Index].Numerek.ToString("D"));
                     
                     Wypisz_Punkty(suma);
                 }
@@ -186,8 +188,8 @@ namespace Oczko
             for (byte i = 0; i < IleKart; i++)
             {
 
-                byte n = byte.Parse(kartyGracza[Index].Numerek.ToString("D"));
-                byte dn = byte.Parse(kartyGracza[index].DodatkoweNumerki.ToString("D"));
+                byte n = byte.Parse(taliaGracza[Index].Numerek.ToString("D"));
+                byte dn = byte.Parse(taliaGracza[index].DodatkoweNumerki.ToString("D"));
                 byte sum = suma;
                 bool c = indexyWydane.Contains(i);
                 if (c == false)
@@ -229,8 +231,8 @@ namespace Oczko
                     if ((index <= 5 && index >= 0) || (index <= 18 && index >= 13)
                         || (index <= 31 && index >= 26) || (index <= 39 && index >= 32) || (index <= 52 && index >= 47))
                     {
-                        byte v = byte.Parse(kartyGracza[Index].Numerek.ToString("D"));
-                        Wypisz_Karte(IleKart, kartyGracza[Index], Index);
+                        byte v = byte.Parse(taliaGracza[Index].Numerek.ToString("D"));
+                        Wypisz_Karte(IleKart, taliaGracza[index], Index);
 
                         suma += v;
                         Wypisz_Punkty(suma);
@@ -238,15 +240,15 @@ namespace Oczko
                     }
                     else
                     {
-                        Wypisz_Karte(IleKart, kartyGracza[Index], Index);
-                        suma += byte.Parse(kartyGracza[index].DodatkoweNumerki.ToString("D"));
+                        Wypisz_Karte(IleKart, taliaGracza[index], Index);
+                        suma += byte.Parse(taliaGracza[index].DodatkoweNumerki.ToString("D"));
                         Wypisz_Punkty(suma);
                     }
                 }
                 else
                 {
-                    byte v = byte.Parse(kartyGracza[Index].Numerek.ToString("D"));
-                    Wypisz_Karte(IleKart, kartyGracza[Index], Index);
+                    byte v = byte.Parse(taliaGracza[Index].Numerek.ToString("D"));
+                    Wypisz_Karte(IleKart, taliaGracza[index], Index);
                     Wypisz_Punkty(suma);
                 }
                 
@@ -267,7 +269,7 @@ namespace Oczko
 
         }
 
-        public void Wypisz_Karte(byte ileKart, Karty karty, byte index)
+        public void Wypisz_Karte(byte ileKart, Karty karta, byte index)
         {
             if (ileKart == 52)
             {
@@ -276,23 +278,23 @@ namespace Oczko
                 {
 
 
-                    Console.Write(karty.Numerek);
+                    Console.Write(taliaGracza[index].Numerek.ToString("f"));
                     Console.Write("  ");
-                    Console.WriteLine(karty.Kolorek);
+                    Console.WriteLine(taliaGracza[index].Kolorek.ToString("f"));
                 }
                 else
                 {
-                    Console.Write(karty.DodatkoweNumerki);
+                    Console.Write(taliaGracza[index].DodatkoweNumerki.ToString("f"));
                     Console.Write("  ");
 
-                    Console.WriteLine(karty.Kolorek);
+                    Console.WriteLine(taliaGracza[index].Kolorek.ToString("f"));
                 }
             }
             else
             {
-                Console.Write(value: karty.Numerek);
+                Console.Write(value: taliaGracza[index].Numerek.ToString("f"));
                 Console.Write("  ");
-                Console.WriteLine(value: karty.Kolorek);
+                Console.WriteLine(value: taliaGracza[index].Kolorek.ToString("f"));
             }
         }
         //public void Wypisz_Punkty(byte punkty)

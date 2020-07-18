@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.VisualBasic;
 using Oczko;
 
 namespace Gra_Oczko
@@ -11,21 +12,21 @@ namespace Gra_Oczko
             string linia = " ";  
             
             Console.WriteLine(" GRAMY W OCZKO !!!");
-            var x = Talia.Ile_Kart();
-            //Talia t = new Talia(x);
-            //t.Talia_Kreator(x);
-            Rozgrywka r = new Rozgrywka(x);
-            
             while (linia != "" && linia != null)
+            {
+                var x = Talia.Ile_Kart();
             
+             Rozgrywka r = new Rozgrywka(x);
+            
+                
                 r.Zagraj();
                 r.Wynik_Koncowy();
-                Console.WriteLine("\n Jeszcze raz? \n ENTER kończy grę:(");
-                linia = Console.ReadLine();
-           
-            r.Wynik_Koncowy();
-            r.ToString();
+                //Console.WriteLine("\n Jeszcze raz? \n ENTER kończy grę:(");
+                //linia = Console.ReadLine();
 
+                
+
+            }
             Console.ReadLine();
         }
     }

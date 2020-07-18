@@ -6,30 +6,31 @@ namespace Oczko
 {
     public class Talia : Karty
     {
-        public byte ileKart;
+        
         protected Array kolorvalues = Enum.GetValues(typeof(Kolor));
         protected Array numervalues = Enum.GetValues(typeof(Numer));
         protected Array dnumervalues = Enum.GetValues(typeof(DodatkoweNumery));
         public static byte IleKart { get; private set; }
-        //{
-        //    get
-        //    {
-        //        return ileKart;
-        //    }
+        public byte ileKart
+        {
+            get
+            {
+                return ileKart;
+            }
 
-        //    set
-        //    {
-        //        if (value == 52 || value == 24)
-        //        {
-        //            ileKart = value;
-        //        }
-        //        else
-        //        {
-        //            throw new ArgumentException("ERROR");
-        //        }
+            set
+            {
+                if (value == 52 || value == 24)
+                {
+                    ileKart = value;
+                }
+                else
+                {
+                    throw new ArgumentException("ERROR");
+                }
 
-        //    }
-        //}
+            }
+        }
 
         protected readonly Karty[] wybrana_Talia;
         public Karty[] GetTalia { get { return wybrana_Talia; } }
@@ -71,9 +72,9 @@ namespace Oczko
             for (int i = 0; i < kolorvalues.Length; i++)
             {
                 
-                int j;
+                
                 Kolor k = (Kolor)kolorvalues.GetValue(i);
-                for ( j = 0; j < numervalues.Length; j++)
+                for (int  j = 0; j < numervalues.Length; j++)
                 {
                     Numer n = (Numer)numervalues.GetValue(j);
                     var karty = new Karty { Kolorek = k, Numerek = n };

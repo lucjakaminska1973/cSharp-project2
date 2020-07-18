@@ -142,11 +142,12 @@ namespace Oczko
                     {
                         Wypisz_Karte(IleKart, taliaGracza[index], Index);
                         byte v = byte.Parse(taliaGracza[Index].Numerek.ToString("D"));
-                        
+
                         if (v == 1)
                         {
                             v = Za_ile_As();
                         }
+                        
                         suma += v;
                         Wypisz_Punkty(suma);
                         //return suma.Total;
@@ -166,7 +167,16 @@ namespace Oczko
                     
                     Wypisz_Punkty(suma);
                 }
-                Zapytaj();
+                if (suma == 21)
+                {
+                    Console.WriteLine("OCZKO!!!");
+                    dodacKarte = "n";
+                }
+                else
+                {
+                    Zapytaj();
+                }
+                
             }
             if (DodacKarte == "n" || DodacKarte == "N")
             {
@@ -251,8 +261,16 @@ namespace Oczko
                     Wypisz_Karte(IleKart, taliaGracza[index], Index);
                     Wypisz_Punkty(suma);
                 }
+                if (suma == 21)
+                {
+                    Console.WriteLine("OCZKO!!!");
+                    dodacKarte = "n";
+                }
+                else
+                {
+                    Czy_Dobrac_Komp();
+                }
                 
-                Czy_Dobrac_Komp();
             } while (DodacKarte == "t");
 
             if (DodacKarte == "n" || DodacKarte == "N")

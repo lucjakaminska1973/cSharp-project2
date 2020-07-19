@@ -164,7 +164,7 @@ namespace Oczko
                 {
                     Wypisz_Karte(IleKart, taliaGracza[index], Index);
                     byte v = byte.Parse(taliaGracza[Index].Numerek.ToString("D"));
-                    
+                    suma += v;
                     Wypisz_Punkty(suma);
                 }
                 if (suma == 21)

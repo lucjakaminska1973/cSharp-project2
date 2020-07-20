@@ -11,7 +11,7 @@ namespace Gra_Oczko
         {
             Console.OutputEncoding = Encoding.UTF8;
             
-            string linia = "";
+            
             Console.WriteLine(" GRAMY W OCZKO !!!");
             CardDeck cd = new CardDeck();
 
@@ -21,7 +21,7 @@ namespace Gra_Oczko
             Console.WriteLine(home.GetHandCardsValue());
             int i = 2;
             Console.WriteLine("Dodać karte t/n");
-            linia = Console.ReadLine();
+            string linia = Console.ReadLine();
             while (linia == "t")
             {
                 home.PushCard(cd.GetOneCard());

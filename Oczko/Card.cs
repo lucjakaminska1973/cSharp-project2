@@ -5,8 +5,6 @@ using System.Threading;
 
 namespace Oczko
 {
-
-
     public enum CardColor
     {
         HEARTS,
@@ -21,27 +19,25 @@ namespace Oczko
         EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE
     }
 
+    // immutable
     public class Card
     {
-        
+        public CardColor Color { get; private set; }
+        public CardName Name { get; private set; }// muszę dać set bo potem nie daje mi utwożyc talii -CardDeck.setUpDeck()
+        public int Value { get; }
 
-        public  CardColor Color { get; set; }
-        public  CardName Name { get; set; }// muszę dać set bo potem nie daje mi utwożyc talii -CardDeck.setUpDeck()
-        public int Value { get; set; }
-        
 
         public Card(CardColor color, CardName name)
         {
             Color = color;
             Name = name;
             Value = GetValue(Name);
-
         }
-       
+
         public int GetValue(CardName cn)
         {
-            int value=0;
-            switch(cn)
+            int value = 0;
+            switch (cn)
             {
                 case CardName.ACE:
                     value = 1;
@@ -87,36 +83,27 @@ namespace Oczko
 
         public string DisplayCard(CardColor cc)
         {
-            
-             char charcardColor = ' ';
-            
+            char charcardColor = ' ';
+
+            // https://en.wikipedia.org/wiki/Playing_cards_in_Unicode
             switch (cc)
             {
                 case CardColor.HEARTS:
-                    charcardColor = Encoding.GetEncoding(437).GetChars(new byte[] { 3 })[0];
-                   
+                    charcardColor = '♥';// Encoding.GetEncoding(437).GetChars(new byte[] { 3 })[0];                   
                     break;
                 case CardColor.DIAMONDS:
-                    charcardColor = Encoding.GetEncoding(437).GetChars(new byte[] { 4 })[0];
-                    
+                    charcardColor = '♦';  // Encoding.GetEncoding(437).GetChars(new byte[] { 4 })[0];                    
                     break;
                 case CardColor.CLUBS:
-                    charcardColor = Encoding.GetEncoding(437).GetChars(new byte[] { 5 })[0];
-                   
+                    charcardColor = '♣'; //Encoding.GetEncoding(437).GetChars(new byte[] { 5 })[0];
                     break;
                 case CardColor.SPADES:
-                    charcardColor = Encoding.GetEncoding(437).GetChars(new byte[] { 6 })[0];
-                    
+                    charcardColor = '♠';  // Encoding.GetEncoding(437).GetChars(new byte[] { 6 })[0];
                     break;
-                    
             }
             return $"{charcardColor}";
-           
-
-           
-
         }
-       
+
     }
 }
 

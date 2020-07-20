@@ -18,7 +18,7 @@ namespace Oczko
         }
         public List<Card>GetTabCards{ get {return tabCards;} }
 
-        public List<Card>GetTabCard(int index)
+        public Card GetCard(int index)
         {
             return tabCards[index];
         }

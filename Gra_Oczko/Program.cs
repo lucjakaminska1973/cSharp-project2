@@ -17,7 +17,8 @@ namespace Gra_Oczko
             
             for (int i = 0; i < 52; i++)
             {
-                cd.GetTabCards();
+                Card card = cd.GetCard(i);
+                Console.WriteLine(card.ToString);
             
 
                 //Console.WriteLine(card.ToString());

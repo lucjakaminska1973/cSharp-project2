@@ -13,15 +13,19 @@ namespace Gra_Oczko
             string linia = " ";  
             
             Console.WriteLine(" GRAMY W OCZKO !!!");
-            CardDeck c = new Oczko.CardDeck;
-           for (int i=0; i<52; i++)
+            CardDeck cd = new CardDeck();
+            
+            for (int i = 0; i < 52; i++)
             {
+                cd.GetTabCards();
+            
 
-            }// klasy niedostępne z powodu poziomu ochrony. muszę poczytac bo wszystko jest public
+                //Console.WriteLine(card.ToString());
+            }
 
                 
 
-            }
+            
             Console.ReadLine();
         }
     }

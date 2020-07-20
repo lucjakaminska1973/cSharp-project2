@@ -7,23 +7,23 @@ namespace Oczko
 {
 
 
-
-    
-    class Card
+    public enum CardColor
     {
-        public enum CardColor// Jeżeli wyrzucę poza klasę to nie są dostępne
-        {
-            HEARTS,
-            SPADES,
-            DIAMONDS,
-            CLUBS
-        }
+        HEARTS,
+        SPADES,
+        DIAMONDS,
+        CLUBS
+    }
 
-        public enum CardName
-        {
-            TWO, THREE, FOUR, FIVE, SIX, SEVEN,
-            EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE
-        }
+    public enum CardName
+    {
+        TWO, THREE, FOUR, FIVE, SIX, SEVEN,
+        EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE
+    }
+
+    public class Card
+    {
+        
 
         public  CardColor Color { get; set; }
         public  CardName Name { get; set; }// muszę dać set bo potem nie daje mi utwożyc talii -CardDeck.setUpDeck()
@@ -37,10 +37,7 @@ namespace Oczko
             Value = GetValue(Name);
 
         }
-        public Card card = new Card( Color, Name);// tu  podkreśla pola i woła 
-        //ze utworzenie karty wymaga odwołania do pola statycznego. nie wiem co z tym zrobic, 
-        //bo na staticu nie dje zapisac tablicy talia kartami
-        // a jeżeli przypiszę static nie mogę użyć jako pola w konst
+       
         public int GetValue(CardName cn)
         {
             int value=0;
@@ -84,36 +81,36 @@ namespace Oczko
 
         public override string ToString()
         {
-            return DisplayCard(Color);
+
+            return $"{Name}{ DisplayCard(Color)}";
         }
 
         public string DisplayCard(CardColor cc)
         {
-            Console.ForegroundColor = ConsoleColor.White;
+            
              char charcardColor = ' ';
-            //string cc = Enum.GetName(typeof(CardColor),card);
-            // nie wiem 
+            
             switch (cc)
             {
                 case CardColor.HEARTS:
                     charcardColor = Encoding.GetEncoding(437).GetChars(new byte[] { 3 })[0];
-                    Console.ForegroundColor = ConsoleColor.Red;
+                   
                     break;
-                case Card.CardColor.DIAMONDS:
+                case CardColor.DIAMONDS:
                     charcardColor = Encoding.GetEncoding(437).GetChars(new byte[] { 4 })[0];
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    
                     break;
-                case Card.CardColor.CLUBS:
+                case CardColor.CLUBS:
                     charcardColor = Encoding.GetEncoding(437).GetChars(new byte[] { 5 })[0];
-                    Console.ForegroundColor = ConsoleColor.Black;
+                   
                     break;
-                case Card.CardColor.SPADES:
+                case CardColor.SPADES:
                     charcardColor = Encoding.GetEncoding(437).GetChars(new byte[] { 6 })[0];
-                    Console.ForegroundColor = ConsoleColor.Black;
+                    
                     break;
                     
             }
-            return $"{Name}{charcardColor}";
+            return $"{charcardColor}";
            
 
            

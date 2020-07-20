@@ -5,37 +5,60 @@ using System.Text;
 
 namespace Oczko
 {
-    class CardDeck :Card
+    public class CardDeck 
     {
         
-        protected Card[] tabCards;
+        protected List<Card> tabCards;
       
         public CardDeck()
         {
 
-            tabCards = new Card[52];
-            
+            tabCards = new List<Card>(52);
+            setUpDeck();
         }
-        public Card[]GetTabCards{ get {return tabCards;} }
-            
+        public List<Card>GetTabCards{ get {return tabCards;} }
+
+        public List<Card>GetTabCard(int index)
+        {
+            return tabCards[index];
+        }
 
 
-        
-        
-        public void setUpDeck()
+
+
+        private void setUpDeck()
         {
 
             int i = 0;
-            foreach (Card.CardColor c in Enum.GetValues(typeof(Card.CardColor)))
+            foreach (CardColor c in Enum.GetValues(typeof(CardColor)))
             {
-                foreach (Card.CardName v in Enum.GetValues(typeof(Card.CardName)))
+                foreach (CardName v in Enum.GetValues(typeof(CardName)))
                 {
-                    Card card = new Card { Color = c, Name = v };
-                    tabCards[i] = card;
+                    Card card = new Card(c, v);
+                    tabCards.Add(card);
                     i++;
                 }
             }
+            ShuffleCards();
         }
-      }
+        public void ShuffleCards()
+        {
+            Random rand = new Random();
+            Card temp;
+
+            
+            for (int i= 0; i< 100; i++)
+            {
+                for (int j = 0; j < 52; j++)
+                {
+                   
+                    int index2 = rand.Next(13);
+                    temp = tabCards[j];
+                    tabCards[j] = tabCards[index2];
+                    tabCards[index2] = temp;
+                }
+            }
+        }
+    }
 
 }

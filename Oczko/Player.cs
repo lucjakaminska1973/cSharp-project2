@@ -10,6 +10,7 @@ namespace Oczko
 
         private List<Card> handCards = new List<Card>();
         public IReadOnlyList<Card> GetHandCardsList => handCards.AsReadOnly();
+        //private int toGoal { get; private set; }
 
         public void PushCard( Card card)
         {
@@ -36,6 +37,8 @@ namespace Oczko
 
             return sum;
         }
+
+        
     }
     
 }

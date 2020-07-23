@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gra_Oczko", "Gra_Oczko\Gra_Oczko.csproj", "{35CCF081-4EC3-45F5-A220-818B1C8CF134}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gra_Oczko", "Gra_Oczko\Gra_Oczko.csproj", "{35CCF081-4EC3-45F5-A220-818B1C8CF134}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oczko", "Oczko\Oczko.csproj", "{C3AEB8F0-4059-4FD3-B038-AD01986AD00C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oczko", "Oczko\Oczko.csproj", "{C3AEB8F0-4059-4FD3-B038-AD01986AD00C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
